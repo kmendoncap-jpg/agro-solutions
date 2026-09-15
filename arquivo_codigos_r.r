@@ -1,7 +1,10 @@
-install.packages("httr", quiet = TRUE)
-install.packages("jsonlite", quiet = TRUE)
-library(httr)
-library(jsonlite)
+pacotes_necessarios <- c("httr", "jsonlite")
+for (pacote in pacotes_necessarios) {
+  if (!require(pacote, character.only = TRUE, quietly = TRUE)) {
+    install.packages(pacote, repos = "https://cloud.r-project.org", quiet = TRUE)
+    library(pacote, character.only = TRUE)
+  }
+}
 
 cat("\n==================================\n")
 cat("   FARMTECH SOLUTIONS - ESTATÍSTICA\n")
